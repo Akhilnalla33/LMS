@@ -24,8 +24,8 @@ const AttemptCourseQuizzes = () => {
     const fetchData = async () => {
       try {
         const [courseRes, quizRes] = await Promise.all([
-          axios.get(`http://localhost:5000/api/courses/${courseId}`),
-          axios.get(`http://localhost:5000/api/quizzes/by-course/${courseId}`)
+          axios.get(`https://lms-backend-q19j.onrender.com/api/courses/${courseId}`),
+          axios.get(`https://lms-backend-q19j.onrender.com/api/quizzes/by-course/${courseId}`)
         ]);
         setCourseName(courseRes.data.title || "Untitled Course");
         setQuizzes(quizRes.data);
@@ -61,7 +61,7 @@ const AttemptCourseQuizzes = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/quizzes/submit",
+        "https://lms-backend-q19j.onrender.com/api/quizzes/submit",
         { studentId, quizId, responses: payload },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -71,7 +71,7 @@ const AttemptCourseQuizzes = () => {
       const total   = data.results.length;
       const correct = data.results.filter(r => r.isCorrect).length;
       await axios.post(
-        "http://localhost:5000/api/progress/save",
+        "https://lms-backend-q19j.onrender.com/api/progress/save",
         { studentId, courseId, quizId, correctAnswers: correct, totalQuestions: total },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -219,3 +219,4 @@ const AttemptCourseQuizzes = () => {
 };
 
 export default AttemptCourseQuizzes;
+

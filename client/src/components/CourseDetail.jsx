@@ -23,15 +23,15 @@ const CourseDetail = ({ userRole }) => {
     (async () => {
       try {
         const [cRes, qRes] = await Promise.all([
-          axios.get(`http://localhost:5000/api/courses/${courseId}`),
-          axios.get(`http://localhost:5000/api/quizzes/by-course/${courseId}`)
+          axios.get(`https://lms-backend-q19j.onrender.com/api/courses/${courseId}`),
+          axios.get(`https://lms-backend-q19j.onrender.com/api/quizzes/by-course/${courseId}`)
         ]);
         setCourse(cRes.data);
         setQuizzes(qRes.data);
 
         if (userRole === "student" && token && studentId) {
           const pRes = await axios.get(
-            `http://localhost:5000/api/progress/student/${studentId}`,
+            `https://lms-backend-q19j.onrender.com/api/progress/student/${studentId}`,
             { headers: { Authorization: `Bearer ${token}` } }
           );
           setProgress(Array.isArray(pRes.data) ? pRes.data : []);
@@ -74,7 +74,7 @@ const CourseDetail = ({ userRole }) => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/certificates/generate",
+        "https://lms-backend-q19j.onrender.com/api/certificates/generate",
         { studentId, courseId, studentName },
         { headers: { Authorization: `Bearer ${token}` }, responseType: "blob" }
       );
@@ -258,3 +258,4 @@ const CourseDetail = ({ userRole }) => {
 };
 
 export default CourseDetail;
+

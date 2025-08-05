@@ -11,7 +11,7 @@ const CertificateGenerator = () => {
   useEffect(() => {
     const studentId = localStorage.getItem("studentId");
 
-    axios.get(`http://localhost:5000/api/progress/student/${studentId}`)
+    axios.get(`https://lms-backend-q19j.onrender.com/api/progress/student/${studentId}`)
       .then(({ data }) => {
         const courseEntries = data.filter(e => e.courseId === courseId);
         const avg = courseEntries.reduce((sum, e) => sum + e.progress, 0) / courseEntries.length || 0;
@@ -31,7 +31,7 @@ const CertificateGenerator = () => {
 
     try {
       const resp = await axios.post(
-        "http://localhost:5000/api/certificates/generate",
+        "https://lms-backend-q19j.onrender.com/api/certificates/generate",
         { studentId, courseId, studentName: name },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -78,3 +78,4 @@ const CertificateGenerator = () => {
 };
 
 export default CertificateGenerator;
+

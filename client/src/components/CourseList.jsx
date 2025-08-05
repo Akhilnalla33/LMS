@@ -19,7 +19,7 @@ const CourseList = ({ userRole }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/courses/all")
+      .get("https://lms-backend-q19j.onrender.com/api/courses/all")
       .then((res) => Array.isArray(res.data) ? setCourses(res.data) : setError("Failed to load courses."))
       .catch(() => setError("Failed to load courses."))
       .finally(() => setLoading(false));
@@ -28,7 +28,7 @@ const CourseList = ({ userRole }) => {
   useEffect(() => {
     if (userRole !== "student" || !token) return;
     axios
-      .get("http://localhost:5000/api/enroll/mine", {
+      .get("https://lms-backend-q19j.onrender.com/api/enroll/mine", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -72,7 +72,7 @@ const CourseList = ({ userRole }) => {
       });
 
       await axios.post(
-        "http://localhost:5000/api/enroll",
+        "https://lms-backend-q19j.onrender.com/api/enroll",
         { courseId, paymentId },
         {
           headers: {
@@ -82,7 +82,7 @@ const CourseList = ({ userRole }) => {
         }
       );
 
-      const res = await axios.get("http://localhost:5000/api/enroll/mine", {
+      const res = await axios.get("https://lms-backend-q19j.onrender.com/api/enroll/mine", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const ids = (res.data || []).map((c) => c?._id).filter(Boolean);
@@ -103,7 +103,7 @@ const CourseList = ({ userRole }) => {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this course?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/courses/${id}`, {
+      await axios.delete(`https://lms-backend-q19j.onrender.com/api/courses/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCourses((prev) => prev.filter((c) => c._id !== id));
@@ -221,3 +221,4 @@ const CourseList = ({ userRole }) => {
 };
 
 export default CourseList;
+

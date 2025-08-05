@@ -23,7 +23,7 @@ const QuizList = ({ quizzes }) => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/quizzes/submit", {
+      const response = await axios.post("https://lms-backend-q19j.onrender.com/api/quizzes/submit", {
         quizId,
         questionText: selected.questionText,
         selectedAnswer: selected.selectedAnswer,
@@ -99,3 +99,4 @@ const QuizList = ({ quizzes }) => {
 };
 
 export default QuizList;
+

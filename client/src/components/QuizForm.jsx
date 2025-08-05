@@ -13,7 +13,7 @@ const QuizForm = ({ refreshQuizzes = () => {} }) => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/courses/all");
+        const res = await axios.get("https://lms-backend-q19j.onrender.com/api/courses/all");
         setCourses(res.data);
       } catch (e) {
         console.error("Error fetching courses:", e);
@@ -36,7 +36,7 @@ const QuizForm = ({ refreshQuizzes = () => {} }) => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:5000/api/quizzes/add",
+        "https://lms-backend-q19j.onrender.com/api/quizzes/add",
         { courseId, questions: [{ questionText, options, correctAnswer }] },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -142,3 +142,4 @@ const QuizForm = ({ refreshQuizzes = () => {} }) => {
 };
 
 export default QuizForm;
+

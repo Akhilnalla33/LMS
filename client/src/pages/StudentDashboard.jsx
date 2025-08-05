@@ -18,12 +18,12 @@ const StudentDashboard = () => {
   useEffect(() => {
     if (!token) return navigate("/login");
 
-    const enrollReq = axios.get("http://localhost:5000/api/enroll/mine", {
+    const enrollReq = axios.get("https://lms-backend-q19j.onrender.com/api/enroll/mine", {
       headers: { Authorization: `Bearer ${token}` },
     });
-    const quizReq = axios.get("http://localhost:5000/api/quizzes/all");
+    const quizReq = axios.get("https://lms-backend-q19j.onrender.com/api/quizzes/all");
     const progReq = axios.get(
-      `http://localhost:5000/api/progress/student/${studentId}`,
+      `https://lms-backend-q19j.onrender.com/api/progress/student/${studentId}`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
 
@@ -116,3 +116,4 @@ const StudentDashboard = () => {
 };
 
 export default StudentDashboard;
+

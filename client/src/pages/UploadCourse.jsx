@@ -20,7 +20,7 @@ const UploadCourse = () => {
   useEffect(() => {
     if (courseId) {
       setIsEditMode(true);
-      axios.get(`http://localhost:5000/api/courses/${courseId}`)
+      axios.get(`https://lms-backend-q19j.onrender.com/api/courses/${courseId}`)
         .then((res) => {
           const { title, description, thumbnail, videoUrl } = res.data;
           setFormData({ title, description, thumbnail, videoUrl });
@@ -38,8 +38,8 @@ const UploadCourse = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const endpoint = isEditMode
-      ? `http://localhost:5000/api/courses/${courseId}`
-      : `http://localhost:5000/api/courses`;
+      ? `https://lms-backend-q19j.onrender.com/api/courses/${courseId}`
+      : `https://lms-backend-q19j.onrender.com/api/courses`;
 
     const method = isEditMode ? axios.put : axios.post;
 
@@ -143,3 +143,4 @@ const UploadCourse = () => {
 };
 
 export default UploadCourse;
+

@@ -26,7 +26,7 @@ const StudentQuizList = ({ quizzes }) => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/quizzes/submit", {
+      const response = await axios.post("https://lms-backend-q19j.onrender.com/api/quizzes/submit", {
         quizId,
         responses: Object.keys(answers).map((questionId) => ({
           questionId,
@@ -115,3 +115,4 @@ const StudentQuizList = ({ quizzes }) => {
 };
 
 export default StudentQuizList;
+

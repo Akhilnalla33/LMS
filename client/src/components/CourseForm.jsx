@@ -25,11 +25,11 @@ const CourseForm = ({ selectedCourse }) => {
     try {
       if (selectedCourse) {
         // Update Course
-        await axios.put(`http://localhost:5000/api/courses/update/${selectedCourse._id}`, courseData);
+        await axios.put(`https://lms-backend-q19j.onrender.com/api/courses/update/${selectedCourse._id}`, courseData);
         alert("Course updated successfully!");
       } else {
         // Add Course
-        await axios.post("http://localhost:5000/api/courses/add", courseData);
+        await axios.post("https://lms-backend-q19j.onrender.com/api/courses/add", courseData);
         alert("Course added successfully!");
       }
 
@@ -87,3 +87,4 @@ const CourseForm = ({ selectedCourse }) => {
 };
 
 export default CourseForm;
+

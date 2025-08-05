@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "https://lms-backend-q19j.onrender.com/api";
 
 /**
  * Fetch enrolled courses for a student
@@ -34,3 +34,4 @@ export const enrollInCourse = async (studentId, courseId) => {
     return false;
   }
 };
+

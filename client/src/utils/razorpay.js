@@ -29,7 +29,7 @@ export const openRazorpay = async ({
     description: `Enroll for ${courseTitle}`,
     handler: async function (response) {
       try {
-        const enrollRes = await fetch("http://localhost:5000/api/enroll", {
+        const enrollRes = await fetch("https://lms-backend-q19j.onrender.com/api/enroll", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -62,3 +62,4 @@ export const openRazorpay = async ({
   const rzp = new window.Razorpay(options);
   rzp.open();
 };
+

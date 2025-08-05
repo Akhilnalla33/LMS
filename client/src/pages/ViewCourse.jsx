@@ -15,7 +15,7 @@ const ViewCourse = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/courses/all")
+      .get("https://lms-backend-q19j.onrender.com/api/courses/all")
       .then((res) => setCourses(res.data))
       .catch((err) => console.error("Fetch courses failed:", err));
   }, []);
@@ -45,7 +45,7 @@ const ViewCourse = () => {
         try {
           setEnrollingCourseId(course._id);
           setTimeout(async () => {
-            await axios.post("http://localhost:5000/api/enroll", {
+            await axios.post("https://lms-backend-q19j.onrender.com/api/enroll", {
               studentId,
               courseId: course._id,
               paymentId: response.razorpay_payment_id,
@@ -70,7 +70,7 @@ const ViewCourse = () => {
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this course?")) {
-      await axios.delete(`http://localhost:5000/api/courses/${id}`);
+      await axios.delete(`https://lms-backend-q19j.onrender.com/api/courses/${id}`);
       setCourses((prev) => prev.filter((c) => c._id !== id));
     }
   };
@@ -160,3 +160,4 @@ const ViewCourse = () => {
 };
 
 export default ViewCourse;
+

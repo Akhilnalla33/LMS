@@ -15,8 +15,8 @@ const AdminDashboard = () => {
     const fetchDashboardData = async () => {
       try {
         const [studentsRes, coursesRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/students"),
-          axios.get("http://localhost:5000/api/courses/all"),
+          axios.get("https://lms-backend-q19j.onrender.com/api/students"),
+          axios.get("https://lms-backend-q19j.onrender.com/api/courses/all"),
         ]);
         setStudents(studentsRes.data);
         setCourses(coursesRes.data);
@@ -26,7 +26,7 @@ const AdminDashboard = () => {
           coursesRes.data.map(async (course) => {
             try {
               const res = await axios.get(
-                `http://localhost:5000/api/courses/${course._id}/students`
+                `https://lms-backend-q19j.onrender.com/api/courses/${course._id}/students`
               );
               courseData[course._id] = res.data;
             } catch {
@@ -138,3 +138,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+

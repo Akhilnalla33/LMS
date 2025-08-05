@@ -21,7 +21,7 @@ const EditCourse = () => {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/courses/${courseId}`);
+        const response = await axios.get(`https://lms-backend-q19j.onrender.com/api/courses/${courseId}`);
         setFormData(response.data);
       } catch (error) {
         console.error("Error fetching course:", error);
@@ -41,7 +41,7 @@ const EditCourse = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/courses/${courseId}`, formData);
+      await axios.put(`https://lms-backend-q19j.onrender.com/api/courses/${courseId}`, formData);
       alert("✅ Course updated successfully!");
       navigate("/view-course");
     } catch (error) {
@@ -150,3 +150,4 @@ const EditCourse = () => {
 };
 
 export default EditCourse;
+
